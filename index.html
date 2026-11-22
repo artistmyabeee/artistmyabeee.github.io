@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ArtMaybeee Portfolio</title>
+<meta name="description" content="ArtMaybeee: character design and illustration. Commissions open.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: the artist's own signature motif (a flat colour block set behind an inked figure) drives every section; paper ground, ink type, one block colour per section. */
+:root{
+  --paper:#f6f4ef;
+  --ink:#191919;
+  --ink-soft:#5d5b57;
+  --sage:#b9c48f;
+  --tangerine:#ee9a48;
+  --lilac:#b48ae6;
+  --line:#d9d5cc;
+  --display:"Syne","Arial Black",system-ui,sans-serif;
+  --body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+html{overflow-x:hidden}
+body{margin:0;overflow-x:hidden;background:var(--paper);color:var(--ink);font:400 17px/1.6 var(--body)}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--lilac);outline-offset:3px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--display);line-height:1.02;margin:0;text-wrap:balance;letter-spacing:-.01em}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(6px);border-bottom:1.5px solid var(--ink)}
+.nav .wrap{display:flex;align-items:center;gap:24px;height:60px}
+.logo{font:800 20px var(--display);text-decoration:none}
+.nav ul{display:flex;gap:22px;list-style:none;margin:0 0 0 auto;padding:0}
+.nav ul a{text-decoration:none;font-weight:500;font-size:15px}
+.nav ul a:hover{text-decoration:underline;text-underline-offset:4px}
+.status{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;border:1.5px solid var(--ink);border-radius:999px;padding:4px 12px;white-space:nowrap}
+.status i{width:8px;height:8px;border-radius:50%;background:#3f9b4f}
+
+
+.st-short{display:none}
+@media (max-width:900px){.nav ul{display:none}.nav .status{margin-left:auto}}
+@media (max-width:340px){.st-long{display:none}.st-short{display:inline}}
+/* hero */
+.hero{padding:64px 0 72px}
+.hero .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
+.hero .wrap>div:first-child{container-type:inline-size}
+.hero h1{font-size:clamp(28px,8.6vw,96px);font-size:min(112px,9.4cqi);font-weight:800;white-space:nowrap}
+.hero h1 span{white-space:normal}
+.hero h1 span{display:block;font-weight:500;font-size:.3em;letter-spacing:.01em;margin-top:14px}
+.hero p.lead{max-width:30em;color:var(--ink-soft);margin:26px 0 30px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;text-decoration:none;font:600 15px var(--body);padding:13px 22px;border:1.5px solid var(--ink);border-radius:2px;cursor:pointer;background:transparent;color:var(--ink)}
+.btn.solid{background:var(--ink);color:var(--paper)}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--ink)}
+.btn{transition:transform .15s,box-shadow .15s}
+.facts{display:flex;gap:28px;flex-wrap:wrap;margin-top:40px;padding-top:22px;border-top:1.5px solid var(--ink)}
+.facts div{font-size:14px;color:var(--ink-soft)}
+.facts b{display:block;font:700 24px var(--display);color:var(--ink)}
+.block{position:relative;isolation:isolate}
+.block::before{content:"";position:absolute;z-index:-1;inset:22px -22px -22px 22px;background:var(--bk,var(--ink))}
+.hero figure{display:flex;flex-direction:column;align-items:center}
+.hero .block{--bk:var(--sage);width:100%;max-width:520px;margin:0 22px 0 0}
+.hero .block img{border:1.5px solid var(--ink);background:#fff}
+.hero figure{margin:0}
+.hero figcaption{font-size:13px;color:var(--ink-soft);margin-top:34px;text-align:center}
+
+/* section heads */
+section{padding:72px 0}
+.head{display:flex;align-items:end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:34px}
+.head h2{font-size:clamp(30px,8.5vw,68px);max-width:100%;overflow-wrap:anywhere;position:relative;display:inline-block;padding:0 10px}
+.head h2::before{content:"";position:absolute;z-index:-1;left:0;right:-14px;top:38%;bottom:-6px;background:var(--hl)}
+.head h2{isolation:isolate}
+.head p{max-width:34em;color:var(--ink-soft);margin:0}
+
+/* gallery */
+#work{--hl:var(--sage);border-top:1.5px solid var(--ink)}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px}
+.chip{font:600 14px var(--body);padding:8px 14px;border:1.5px solid var(--ink);border-radius:999px;background:transparent;color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.chip small{font-weight:500;opacity:.65;margin-left:4px}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.card{all:unset;cursor:zoom-in;display:flex;flex-direction:column;gap:10px;min-width:0}
+.card .pic{background:#fff;border:1.5px solid var(--ink);aspect-ratio:1;display:grid;place-items:center;overflow:hidden}
+.card img{width:100%;height:100%;object-fit:contain;transition:transform .3s}
+.card:hover img{transform:scale(1.04)}
+.card:focus-visible .pic{outline:3px solid var(--lilac);outline-offset:3px}
+.card .meta{display:flex;justify-content:space-between;gap:10px;font-size:14px}
+.card .meta b{font-weight:600}
+.card .meta b{min-width:0;overflow-wrap:anywhere}
+.card .meta span{color:var(--ink-soft);text-align:right}
+@media (max-width:640px){.card .meta{flex-direction:column;gap:0;font-size:13px}.card .meta span{text-align:left}}
+.card[hidden]{display:none}
+.grid{grid-auto-flow:row dense}
+.card.feature{grid-column:span 2;grid-row:span 2}
+
+
+/* about */
+#about{--hl:var(--lilac);border-top:1.5px solid var(--ink)}
+.about{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:64px;align-items:center}
+.me{margin:0}
+.me .block{--bk:var(--lilac);margin-right:22px}
+.me img{border:1.5px solid var(--ink);background:#fff}
+.me figcaption{font-size:13px;color:var(--ink-soft);margin-top:34px}
+.bio{max-width:34em;margin:0 0 16px;color:var(--ink-soft)}
+.skills{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:28px 0 0;border-top:1.5px solid var(--ink)}
+.skills div{padding:14px 12px 14px 0;border-bottom:1.5px solid var(--ink)}
+.skills dt{font:700 13px var(--body);text-transform:uppercase;letter-spacing:.06em}
+.skills dd{margin:4px 0 0;color:var(--ink-soft)}
+@media (max-width:640px){.lb{padding:12px}.lb .bar{flex-direction:column;align-items:stretch;gap:10px}.lb .ctrl{display:grid;grid-template-columns:1fr 1fr 1fr}.lb button{padding:10px 8px}.lb img{max-width:100%}}
+@media (max-width:980px){.about{grid-template-columns:minmax(0,1fr);gap:40px}.me{max-width:440px}}
+@media (max-width:640px){.skills{grid-template-columns:1fr}}
+
+/* commissions */
+#commissions{--hl:var(--tangerine);background:var(--ink);color:var(--paper)}
+#commissions .head p{color:#bdb9b1}
+#commissions .head h2{color:var(--ink)}
+#commissions .head h2::before{top:0;bottom:0}
+.tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.tier{border:1.5px solid #4a4844;background:#222;display:flex;flex-direction:column}
+.tier .ex{background:#fff;aspect-ratio:4/3;overflow:hidden;display:grid;place-items:center}
+.tier .ex img{width:100%;height:100%;object-fit:cover;object-position:center 22%}
+.tier .body{padding:18px 18px 20px;display:flex;flex-direction:column;gap:8px;flex:1}
+.tier h3{font-size:22px}
+.price{font:800 40px var(--display);font-variant-numeric:tabular-nums;color:var(--tangerine)}
+.price small{font:500 14px var(--body);color:#bdb9b1;margin-left:4px}
+.tier p{margin:0;color:#d8d4cc;font-size:15px}
+.tier .pick{margin-top:auto;align-self:flex-start;border-color:var(--paper);color:var(--paper);font-size:14px;padding:9px 14px}
+.tier .pick:hover{box-shadow:4px 4px 0 var(--tangerine)}
+.notes{display:flex;gap:28px;flex-wrap:wrap;margin-top:28px;font-size:15px;color:#d8d4cc}
+.notes b{color:var(--paper)}
+
+/* process */
+#process{--hl:var(--lilac)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1.5px solid var(--ink)}
+.step{padding:26px 24px 28px;display:flex;flex-direction:column;gap:8px}
+.step+.step{border-left:1.5px solid var(--ink)}
+.step .n{font:800 15px var(--display);display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;background:var(--lilac);border:1.5px solid var(--ink)}
+.step h3{font-size:26px;margin-top:6px}
+.step p{margin:0;color:var(--ink-soft)}
+
+/* contact */
+#contact{--hl:var(--sage);border-top:1.5px solid var(--ink)}
+.contact{display:grid;grid-template-columns:1fr 1.1fr;gap:48px;align-items:start}
+.links{display:flex;flex-direction:column;border-top:1.5px solid var(--ink)}
+.links a{display:flex;justify-content:space-between;gap:16px;padding:16px 4px;border-bottom:1.5px solid var(--ink);text-decoration:none;font-weight:500}
+.links a span{color:var(--ink-soft);font-weight:400;overflow-wrap:anywhere;text-align:right;min-width:0}
+.links a:hover{background:#fff}
+form{display:grid;gap:14px;background:#fff;border:1.5px solid var(--ink);padding:24px;box-shadow:8px 8px 0 var(--sage)}
+form h3{font-size:24px}
+label{display:grid;gap:6px;font-size:14px;font-weight:600}
+input,select,textarea{font:400 16px var(--body);padding:11px 12px;border:1.5px solid var(--ink);border-radius:2px;background:var(--paper);color:var(--ink);width:100%}
+textarea{min-height:110px;resize:vertical}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.out{display:none;gap:10px}
+.out.show{display:grid}
+.out pre{white-space:pre-wrap;font:400 14px/1.5 var(--body);background:var(--paper);border:1.5px dashed var(--ink);padding:14px;margin:0;max-height:260px;overflow:auto}
+.out p{margin:0;font-size:14px;color:var(--ink-soft)}
+footer{border-top:1.5px solid var(--ink);padding:26px 0;font-size:14px;color:var(--ink-soft)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:50;background:#141414;display:none;grid-template-rows:1fr auto;padding:20px}
+.lb.open{display:grid}
+.lb .stage{display:grid;place-items:center;min-height:0}
+.lb img{max-height:100%;max-width:min(92vw,1000px);object-fit:contain;background:#fff}
+.lb .bar{display:flex;align-items:center;justify-content:space-between;gap:16px;color:var(--paper);padding-top:14px;max-width:1000px;width:100%;margin:0 auto}
+.lb .bar b{font:700 20px var(--display)}
+.lb .bar span{color:#bdb9b1;font-size:14px;margin-left:10px}
+.lb .ctrl{display:flex;gap:8px}
+.lb button{font:600 14px var(--body);background:transparent;color:var(--paper);border:1.5px solid var(--paper);padding:8px 14px;cursor:pointer;border-radius:2px}
+
+@media (max-width:980px){
+  .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .tiers{grid-template-columns:repeat(2,1fr)}
+  .hero .wrap,.contact{grid-template-columns:minmax(0,1fr)}
+  .hero .wrap>*,.contact>*{min-width:0}
+}
+@media (max-width:640px){
+  .wrap{padding:0 16px}
+  .nav ul{display:none}
+  .nav .status{margin-left:auto}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .card.feature{grid-column:span 2;grid-row:auto}
+  .tiers,.steps,.row{grid-template-columns:minmax(0,1fr)}
+  .nav .wrap{gap:12px}
+  .logo{font-size:18px}
+  .status{font-size:12px;padding:4px 10px}
+  .facts{gap:18px 24px}
+  .facts b{font-size:20px}
+  .hero .block{margin-right:16px}
+  .block::before{inset:14px -14px -14px 14px}
+  .step+.step{border-left:0;border-top:1.5px solid var(--ink)}
+  .hero{padding:40px 0 48px}
+  section{padding:56px 0}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="logo" href="#top">ArtMaybeee</a>
+    <ul>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#commissions">Commissions</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <span class="status"><i aria-hidden="true"></i><span class="st-long">Commissions open</span><span class="st-short">Open</span></span>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <h1>ArtMaybeee<span>Character design &amp; illustration</span></h1>
+      <p class="lead">I draw characters with loose, inky linework, flat colour blocks and a lot of attitude: witches, swordswomen, masked strangers, and your own OCs. Send me your character and I'll draw them as a quick sketch, a bust, a full figure or a full reference sheet.</p>
+      <div class="cta">
+        <a class="btn solid" href="#commissions">See prices</a>
+        <a class="btn" href="#work">Browse the work</a>
+      </div>
+      <div class="facts">
+        <div><b>From $10</b>sketch commissions</div>
+        <div><b>2+ years</b>drawing digitally</div>
+        <div><b>Clip Studio</b>Paint, high-res delivery</div>
+      </div>
+    </div>
+    <figure>
+      <div class="block"><img src="img/elves.webp" alt="A high elf in blue and a wood elf in green, side by side" width="1400" height="1400"></div>
+      <figcaption>High Elf and Wood Elf</figcaption>
+    </figure>
+  </div>
+</header>
+
+<section id="work">
+  <div class="wrap">
+    <div class="head">
+      <h2>Selected work</h2>
+      <p>A curated set of recent pieces. Tap any piece to see it larger.</p>
+    </div>
+    <div class="filters" role="group" aria-label="Filter the gallery">
+      <button class="chip" data-f="all" aria-pressed="true">All<small>36</small></button>
+      <button class="chip" data-f="color" aria-pressed="false">Colour<small>23</small></button>
+      <button class="chip" data-f="sheet" aria-pressed="false">Character sheets<small>4</small></button>
+      <button class="chip" data-f="ink" aria-pressed="false">Ink<small>6</small></button>
+      <button class="chip" data-f="sketch" aria-pressed="false">Sketches<small>3</small></button>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about">
+    <figure class="me">
+      <div class="block"><img src="img/selfportrait.webp" alt="Self-portrait of the artist in black and white ink, with ink dripping from the top of the head" width="900" height="900" loading="lazy"></div>
+      <figcaption>Self-portrait</figcaption>
+    </figure>
+    <div>
+      <div class="head" style="margin-bottom:22px"><h2>About me</h2></div>
+      <p class="bio">I'm a digital artist who draws characters that tell a story, whether they're for games, comics or personal projects. I work in Clip Studio Paint, mostly in loose ink with flat blocks of colour behind the figure.</p>
+      <p class="bio">I'm open for commissions, freelance work, collaborations and creative projects.</p>
+      <dl class="skills">
+        <div><dt>Focus</dt><dd>Character design, concept art, illustration</dd></div>
+        <div><dt>Style</dt><dd>Stylized, ink-first, bold colour blocks</dd></div>
+        <div><dt>Software</dt><dd>Clip Studio Paint</dd></div>
+        <div><dt>Experience</dt><dd>2+ years drawing digitally</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section id="commissions">
+  <div class="wrap">
+    <div class="head">
+      <h2>Commissions</h2>
+      <p>Prices are in US dollars, per character. Each tier shows a piece from the gallery at that level of finish.</p>
+    </div>
+    <div class="tiers">
+      <article class="tier">
+        <div class="ex"><img src="img/inkduo.webp" alt="Example: black and white line art of two women" loading="lazy"></div>
+        <div class="body">
+          <h3>Sketch</h3>
+          <div class="price">$10</div>
+          <p>A simple sketch of your character with clean linework.</p>
+          <button class="btn pick" data-tier="Sketch ($10)">Request a sketch</button>
+        </div>
+      </article>
+      <article class="tier">
+        <div class="ex"><img src="img/bust.webp" alt="Example: coloured bust of a white-haired woman holding a cigarette" loading="lazy"></div>
+        <div class="body">
+          <h3>Character bust</h3>
+          <div class="price">$30</div>
+          <p>A detailed bust illustration with a background tone.</p>
+          <button class="btn pick" data-tier="Character bust ($30)">Request a bust</button>
+        </div>
+      </article>
+      <article class="tier">
+        <div class="ex"><img src="img/maskedblade.webp" alt="Example: full-body coloured swordswoman" loading="lazy"></div>
+        <div class="body">
+          <h3>Full character</h3>
+          <div class="price">$45</div>
+          <p>Your character full body, with full colour rendering.</p>
+          <button class="btn pick" data-tier="Full character ($45)">Request a full character</button>
+        </div>
+      </article>
+      <article class="tier">
+        <div class="ex"><img src="img/adventurer.webp" alt="Example: character sheet with expressions and a full-body view" loading="lazy"></div>
+        <div class="body">
+          <h3>Concept sheet</h3>
+          <div class="price">$65</div>
+          <p>A multi-view sheet with details and colour callouts.</p>
+          <button class="btn pick" data-tier="Concept sheet ($65)">Request a sheet</button>
+        </div>
+      </article>
+    </div>
+    <div class="notes">
+      <div><b>50% deposit</b> to start, the rest on delivery.</div>
+      <div><b>You approve the sketch</b> before I move to the final.</div>
+      <div><b>High-resolution</b> final file.</div>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap">
+    <div class="head">
+      <h2>How it works</h2>
+      <p>Three steps from your idea to the finished file.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><span class="n">1</span><h3>Brief</h3><p>You send references, the mood you want and what the art is for.</p></div>
+      <div class="step"><span class="n">2</span><h3>Sketch</h3><p>I send a sketch for your feedback. Changes happen here, before any colour.</p></div>
+      <div class="step"><span class="n">3</span><h3>Final</h3><p>I finish the piece and deliver the high-resolution artwork.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap contact">
+    <div>
+      <div class="head" style="margin-bottom:22px"><h2>Contact</h2></div>
+      <p style="color:var(--ink-soft);max-width:30em;margin:0 0 24px">Have a character in mind? Write up your request with the form, then send it to me by email or DM. I read every message.</p>
+      <div class="links">
+        <a href="mailto:omarnadar2016@gmail.com">Email <span>omarnadar2016@gmail.com</span></a>
+        <a href="https://x.com/artmaybeee">X / Twitter <span>@artmaybeee</span></a>
+        <a href="https://instagram.com/artist_maybeee">Instagram <span>@artist_maybeee</span></a>
+        <a href="https://www.reddit.com/user/art_maybee/">Reddit <span>u/art_maybee</span></a>
+      </div>
+    </div>
+    <form id="req" novalidate>
+      <h3>Write your request</h3>
+      <div class="row">
+        <label for="f-name">Your name<input id="f-name" name="name" autocomplete="name" required></label>
+        <label for="f-tier">Commission type
+          <select id="f-tier" name="tier">
+            <option>Sketch ($10)</option>
+            <option>Character bust ($30)</option>
+            <option selected>Full character ($45)</option>
+            <option>Concept sheet ($65)</option>
+          </select>
+        </label>
+      </div>
+      <label for="f-chars">Number of characters<input id="f-chars" name="chars" type="number" min="1" value="1" inputmode="numeric"></label>
+      <label for="f-desc">Describe your character<textarea id="f-desc" name="desc" placeholder="Who they are, outfit, pose, mood. Add links to your references."></textarea></label>
+      <button class="btn solid" type="submit">Write my request</button>
+      <div class="out" id="out" aria-live="polite">
+        <pre id="msg"></pre>
+        <button class="btn" type="button" id="copy">Copy request</button>
+        <p>Paste it into an email to omarnadar2016@gmail.com or a DM to @artmaybeee on X.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 ArtMaybeee. All artwork shown is my own.</span>
+    <a href="#top">Back to top</a>
+  </div>
+</footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Artwork viewer">
+  <div class="stage"><img id="lb-img" alt=""></div>
+  <div class="bar">
+    <div><b id="lb-title"></b><span id="lb-cat"></span></div>
+    <div class="ctrl">
+      <button id="lb-prev" type="button">Previous</button>
+      <button id="lb-next" type="button">Next</button>
+      <button id="lb-close" type="button">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const WORK=[{"f": "crimson", "t": "Crimson Duel", "c": "color", "alt": "Hooded archer in green and black with a huge red bow, against black and red blocks", "feature": true}, {"f": "maskedblade", "t": "Masked Blade", "c": "color", "alt": "Masked swordswoman with a striped scarf and a green-glowing blade"}, {"f": "blossom", "t": "Under the Blossom", "c": "color", "alt": "Woman in an orange robe meditating under a blossoming tree, with two chicks"}, {"f": "firekeeper", "t": "Fire Keeper", "c": "sheet", "alt": "Fire Keeper from Dark Souls: full figure and two bust views on an orange block"}, {"f": "adventurer", "t": "Adventurer", "c": "sheet", "alt": "Red-haired adventurer: two expression heads and a full-body view with a cape"}, {"f": "shrine", "t": "Shrine Maiden", "c": "sheet", "alt": "White-haired woman in a pink gown: full figure, bust and back view"}, {"f": "slime", "t": "Slime Tamer", "c": "color", "alt": "Pink-haired girl with a giant blade and a green slime companion"}, {"f": "redline", "t": "Red Line", "c": "color", "alt": "Hooded swordswoman with a katana, against black and red stripes"}, {"f": "redblack", "t": "Red and Black", "c": "color", "alt": "Woman in a black and red dress kneeling, seen from behind"}, {"f": "strapped", "t": "Strapped", "c": "color", "alt": "Black-haired woman in a white jacket sitting with striped stockings"}, {"f": "magna", "t": "Magna", "c": "sketch", "alt": "Magna from Black Clover, ink sketch with a close-up panel"}, {"f": "inkwitch", "t": "Ink Witch", "c": "ink", "alt": "Profile of a witch in a tall hat, greyscale ink"}, {"f": "horned", "t": "Horned", "c": "ink", "alt": "Horned girl exhaling smoke, black and white ink bust"}, {"f": "greatsword", "t": "Greatsword", "c": "ink", "alt": "Black-haired swordswoman carrying a huge sword, black and white"}, {"f": "bassist", "t": "Bassist", "c": "color", "alt": "Woman in a plaid shirt playing a bass guitar"}, {"f": "reddress", "t": "Red Dress", "c": "color", "alt": "Elf woman in a long red dress against red and black blocks"}, {"f": "rosegown", "t": "Rose Gown", "c": "color", "alt": "Woman in an off-shoulder pink gown on a lime block"}, {"f": "pinkpunk", "t": "Pink Punk", "c": "color", "alt": "Pink-haired woman in a crop top and wide black jeans"}, {"f": "smokewitch", "t": "Smoke Witch", "c": "color", "alt": "Witch in a green hat and black cloak rising from smoke"}, {"f": "wanderer", "t": "Wanderer Knight", "c": "color", "alt": "Wanderer in a straw hat holding a sword, green and blue"}, {"f": "spiritmask", "t": "Spirit Mask", "c": "color", "alt": "Portrait of a girl in a pointed-eared mask with flowing golden lines"}, {"f": "greensleeves", "t": "Green Sleeves", "c": "color", "alt": "Green-haired woman with huge sleeves and green flames"}, {"f": "hooded", "t": "Hooded", "c": "color", "alt": "Hooded figure in a navy cloak with a red cross, on a pink block"}, {"f": "redcoat", "t": "Red Coat", "c": "color", "alt": "Elf in a red coat with a sword and a bag"}, {"f": "redhead", "t": "Redhead", "c": "sheet", "alt": "Red-haired woman in a black dress: two full figures and a bust"}, {"f": "elves", "t": "High Elf and Wood Elf", "c": "color", "alt": "A high elf in blue and a wood elf in green, side by side"}, {"f": "greencloak", "t": "Green Cloak", "c": "color", "alt": "Green-haired woman in a long robe resting on a sword"}, {"f": "longsleeves", "t": "Long Sleeves", "c": "color", "alt": "Bunny-eared woman in a robe with very long sleeves"}, {"f": "twoofakind", "t": "Two of a Kind", "c": "color", "alt": "Two women with swords: one in a dark robe, one in a straw hat"}, {"f": "afternoon", "t": "Afternoon", "c": "color", "alt": "Two women kissing by a wooden table, soft pastel colours"}, {"f": "besties", "t": "Besties", "c": "ink", "alt": "Two women in swimsuits kissing, greyscale ink"}, {"f": "sisters", "t": "Sisters", "c": "ink", "alt": "Two black-haired sisters, bust studies in greyscale"}, {"f": "greenblade", "t": "Green Blade", "c": "color", "alt": "Blonde knight with a thin sword in green tones"}, {"f": "inkduo", "t": "Ink Duo", "c": "ink", "alt": "Two women in baggy trousers posing, black and white line art"}, {"f": "expressions", "t": "Expression Study", "c": "sketch", "alt": "Head and eye studies with red eyes, greyscale"}, {"f": "hadenough", "t": "Had Enough", "c": "sketch", "alt": "Sketch of a woman smoking a pipe beside a sign reading HAD ENOUGH"}];
+const CAT={color:"Colour",sheet:"Character sheet",ink:"Ink",sketch:"Sketch"};
+const grid=document.getElementById("grid");
+WORK.forEach((w,i)=>{
+  const b=document.createElement("button");
+  b.className="card"+(w.feature?" feature":"");b.dataset.c=w.c;b.dataset.i=i;b.type="button";
+  b.setAttribute("aria-label","View "+w.t+" larger");
+  b.innerHTML=`<div class="pic"><img src="img/${w.f}.webp" alt="${w.alt}" loading="${i<6?"eager":"lazy"}"></div><div class="meta"><b>${w.t}</b><span>${CAT[w.c]}</span></div>`;
+  b.addEventListener("click",()=>openLb(i));
+  grid.appendChild(b);
+});
+let filter="all";
+document.querySelectorAll(".chip").forEach(ch=>ch.addEventListener("click",()=>{
+  filter=ch.dataset.f;
+  document.querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed",String(x===ch)));
+  grid.querySelectorAll(".card").forEach(c=>{c.hidden=!(filter==="all"||c.dataset.c===filter);c.classList.toggle("feature",filter==="all"&&WORK[c.dataset.i].feature)});
+}));
+
+const lb=document.getElementById("lb"),lbImg=document.getElementById("lb-img");
+let cur=0,lastFocus=null;
+function visible(){return WORK.map((w,i)=>i).filter(i=>filter==="all"||WORK[i].c===filter)}
+function show(i){cur=i;const w=WORK[i];lbImg.src=`img/${w.f}.webp`;lbImg.alt=w.alt;document.getElementById("lb-title").textContent=w.t;document.getElementById("lb-cat").textContent=CAT[w.c]}
+function openLb(i){lastFocus=document.activeElement;show(i);lb.classList.add("open");document.getElementById("lb-close").focus()}
+function closeLb(){lb.classList.remove("open");if(lastFocus)lastFocus.focus()}
+function step(d){const v=visible();const k=v.indexOf(cur);show(v[(k+d+v.length)%v.length])}
+document.getElementById("lb-close").onclick=closeLb;
+document.getElementById("lb-next").onclick=()=>step(1);
+document.getElementById("lb-prev").onclick=()=>step(-1);
+lb.addEventListener("click",e=>{if(e.target===lb||e.target.classList.contains("stage"))closeLb()});
+document.addEventListener("keydown",e=>{if(!lb.classList.contains("open"))return;if(e.key==="Escape")closeLb();if(e.key==="ArrowRight")step(1);if(e.key==="ArrowLeft")step(-1)});
+
+document.querySelectorAll(".pick").forEach(p=>p.addEventListener("click",()=>{
+  document.getElementById("f-tier").value=p.dataset.tier;
+  document.getElementById("contact").scrollIntoView();
+  setTimeout(()=>document.getElementById("f-name").focus({preventScroll:true}),400);
+}));
+document.getElementById("req").addEventListener("submit",e=>{
+  e.preventDefault();
+  const v=id=>document.getElementById(id).value.trim();
+  const name=v("f-name")||"(your name)";
+  const n=Math.max(1,parseInt(v("f-chars"))||1);
+  const msg=`Hi ArtMaybeee,\n\nI'd like to commission a ${v("f-tier")} for ${n} character${n>1?"s":""}.\n\nAbout the character:\n${v("f-desc")||"(add your description and reference links)"}\n\nThanks,\n${name}`;
+  document.getElementById("msg").textContent=msg;
+  document.getElementById("out").classList.add("show");
+});
+document.getElementById("copy").addEventListener("click",async e=>{
+  try{await navigator.clipboard.writeText(document.getElementById("msg").textContent);e.target.textContent="Copied"}
+  catch(_){e.target.textContent="Select the text above to copy it"}
+});
+</script>
+</body>
+</html>
