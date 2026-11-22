@@ -200,7 +200,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   .hero{padding:40px 0 48px}
   section{padding:56px 0}
 }
-</style>
+.lb{display:none;flex-direction:column;grid-template-rows:none;padding:16px;padding-bottom:max(16px,env(safe-area-inset-bottom))}.lb.open{display:flex}.lb .stage{flex:1 1 auto;min-height:0;display:flex;align-items:center;justify-content:center;overflow:hidden}.lb img{display:block;width:auto;height:auto;max-width:min(100%,1000px);max-height:calc(100vh - 150px);max-height:calc(100dvh - 150px)}.lb .bar{flex:0 0 auto}body.lb-lock{overflow:hidden}@media (max-width:640px){.lb{padding:12px}.lb img{max-width:100%;max-height:calc(100vh - 190px);max-height:calc(100dvh - 190px)}}</style>
 </head>
 <body>
 
@@ -422,8 +422,8 @@ const lb=document.getElementById("lb"),lbImg=document.getElementById("lb-img");
 let cur=0,lastFocus=null;
 function visible(){return WORK.map((w,i)=>i).filter(i=>filter==="all"||WORK[i].c===filter)}
 function show(i){cur=i;const w=WORK[i];lbImg.src=`${w.f}.webp`;lbImg.alt=w.alt;document.getElementById("lb-title").textContent=w.t;document.getElementById("lb-cat").textContent=CAT[w.c]}
-function openLb(i){lastFocus=document.activeElement;show(i);lb.classList.add("open");document.getElementById("lb-close").focus()}
-function closeLb(){lb.classList.remove("open");if(lastFocus)lastFocus.focus()}
+function openLb(i){lastFocus=document.activeElement;show(i);lb.classList.add("open");document.body.classList.add("lb-lock");document.getElementById("lb-close").focus()}
+function closeLb(){lb.classList.remove("open");document.body.classList.remove("lb-lock");if(lastFocus)lastFocus.focus({preventScroll:true})}
 function step(d){const v=visible();const k=v.indexOf(cur);show(v[(k+d+v.length)%v.length])}
 document.getElementById("lb-close").onclick=closeLb;
 document.getElementById("lb-next").onclick=()=>step(1);
