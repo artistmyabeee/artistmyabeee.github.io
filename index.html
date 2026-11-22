@@ -234,7 +234,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       </div>
     </div>
     <figure>
-      <div class="block"><img src="img/elves.webp" alt="A high elf in blue and a wood elf in green, side by side" width="1400" height="1400"></div>
+      <div class="block"><img src="elves.webp" alt="A high elf in blue and a wood elf in green, side by side" width="1400" height="1400"></div>
       <figcaption>High Elf and Wood Elf</figcaption>
     </figure>
   </div>
@@ -260,7 +260,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <section id="about">
   <div class="wrap about">
     <figure class="me">
-      <div class="block"><img src="img/selfportrait.webp" alt="Self-portrait of the artist in black and white ink, with ink dripping from the top of the head" width="900" height="900" loading="lazy"></div>
+      <div class="block"><img src="selfportrait.webp" alt="Self-portrait of the artist in black and white ink, with ink dripping from the top of the head" width="900" height="900" loading="lazy"></div>
       <figcaption>Self-portrait</figcaption>
     </figure>
     <div>
@@ -285,7 +285,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     </div>
     <div class="tiers">
       <article class="tier">
-        <div class="ex"><img src="img/inkduo.webp" alt="Example: black and white line art of two women" loading="lazy"></div>
+        <div class="ex"><img src="inkduo.webp" alt="Example: black and white line art of two women" loading="lazy"></div>
         <div class="body">
           <h3>Sketch</h3>
           <div class="price">$10</div>
@@ -294,7 +294,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         </div>
       </article>
       <article class="tier">
-        <div class="ex"><img src="img/bust.webp" alt="Example: coloured bust of a white-haired woman holding a cigarette" loading="lazy"></div>
+        <div class="ex"><img src="bust.webp" alt="Example: coloured bust of a white-haired woman holding a cigarette" loading="lazy"></div>
         <div class="body">
           <h3>Character bust</h3>
           <div class="price">$30</div>
@@ -303,7 +303,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         </div>
       </article>
       <article class="tier">
-        <div class="ex"><img src="img/maskedblade.webp" alt="Example: full-body coloured swordswoman" loading="lazy"></div>
+        <div class="ex"><img src="maskedblade.webp" alt="Example: full-body coloured swordswoman" loading="lazy"></div>
         <div class="body">
           <h3>Full character</h3>
           <div class="price">$45</div>
@@ -312,7 +312,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         </div>
       </article>
       <article class="tier">
-        <div class="ex"><img src="img/adventurer.webp" alt="Example: character sheet with expressions and a full-body view" loading="lazy"></div>
+        <div class="ex"><img src="adventurer.webp" alt="Example: character sheet with expressions and a full-body view" loading="lazy"></div>
         <div class="body">
           <h3>Concept sheet</h3>
           <div class="price">$65</div>
@@ -407,7 +407,7 @@ WORK.forEach((w,i)=>{
   const b=document.createElement("button");
   b.className="card"+(w.feature?" feature":"");b.dataset.c=w.c;b.dataset.i=i;b.type="button";
   b.setAttribute("aria-label","View "+w.t+" larger");
-  b.innerHTML=`<div class="pic"><img src="img/${w.f}.webp" alt="${w.alt}" loading="${i<6?"eager":"lazy"}"></div><div class="meta"><b>${w.t}</b><span>${CAT[w.c]}</span></div>`;
+  b.innerHTML=`<div class="pic"><img src="${w.f}.webp" alt="${w.alt}" loading="${i<6?"eager":"lazy"}"></div><div class="meta"><b>${w.t}</b><span>${CAT[w.c]}</span></div>`;
   b.addEventListener("click",()=>openLb(i));
   grid.appendChild(b);
 });
@@ -421,7 +421,7 @@ document.querySelectorAll(".chip").forEach(ch=>ch.addEventListener("click",()=>{
 const lb=document.getElementById("lb"),lbImg=document.getElementById("lb-img");
 let cur=0,lastFocus=null;
 function visible(){return WORK.map((w,i)=>i).filter(i=>filter==="all"||WORK[i].c===filter)}
-function show(i){cur=i;const w=WORK[i];lbImg.src=`img/${w.f}.webp`;lbImg.alt=w.alt;document.getElementById("lb-title").textContent=w.t;document.getElementById("lb-cat").textContent=CAT[w.c]}
+function show(i){cur=i;const w=WORK[i];lbImg.src=`${w.f}.webp`;lbImg.alt=w.alt;document.getElementById("lb-title").textContent=w.t;document.getElementById("lb-cat").textContent=CAT[w.c]}
 function openLb(i){lastFocus=document.activeElement;show(i);lb.classList.add("open");document.getElementById("lb-close").focus()}
 function closeLb(){lb.classList.remove("open");if(lastFocus)lastFocus.focus()}
 function step(d){const v=visible();const k=v.indexOf(cur);show(v[(k+d+v.length)%v.length])}
